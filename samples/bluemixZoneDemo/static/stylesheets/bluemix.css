@@ -13,12 +13,15 @@ ul.nav li.active a:active, ul.nav li.active a:hover, ul.nav li.active a:focus, u
 
 
 /* initially set the connectedPanel to no display */
-div#connectedPanel {
+/*div#connectedPanel {
 	display:none
-}
+}*/
 
 div#connectWarning, div#registerWarning , div#goWarning, div#vibrationWarning {
-	visibility: hidden
+	visibility: hidden;
+}
+div#goWarning{
+	float:left;
 }
 
 .iotDemo .alert {
@@ -38,7 +41,7 @@ div#connectWarning, div#registerWarning , div#goWarning, div#vibrationWarning {
 
 
 * {
-	color: #152935;
+	color: #FFF;
 }
 
 *, *:before, *:after {
@@ -87,6 +90,39 @@ html, body {
 	vertical-align: baseline;
 }
 
+/** border around headers **/
+.iotDemo .flex-title {  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-between;
+  align-items:center;
+  margin-bottom: 3.4rem;
+  padding-left: 2rem !important;
+padding-right: 2rem !important;
+}
+
+.iotDemo .flex-title::before,.iotDemo .flex-title::after{
+  content:" ";
+  height:1px;
+  background-color:rgb(152,169,180);
+  flex-grow:1;
+}
+
+.iotDemo .flex-item {
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
+  margin-left:1em;
+  font-weight: 700;
+  margin-right:0.5em;
+}
+/** border around headers end **/
+
+
 .iotDemo .medium-font {
 	font-size: 1.14286rem;
 	line-height: 1.45em;
@@ -96,7 +132,7 @@ html, body {
 .iotDemo .medium-font-bold {
 	font-size: 1.14286rem;
 	line-height: 1.45em;
-	margin-bottom: 0;
+	margin-bottom: 0.5rem;
 	font-weight: bold;
 }
 
@@ -107,6 +143,7 @@ html, body {
 	font: inherit;
 	font-size: 100%;
 	vertical-align: baseline;
+	background:#264a60;
 }
 
 .iotDemo {
@@ -114,23 +151,24 @@ html, body {
 }
 
 .medium-large-font {
-	color: #1d3649;
+	color: #FFF;
 }
 
 .iotDemo .use-code-input-row input {
 	height: 3.2rem;
-	margin-right: 1em;
-	font-weight: 700;
+/*	margin-right: 1em;
+*/	font-weight: 700;
 	letter-spacing: 0.04rem;
 	justify-content: center;
 	text-align: center;
-	padding: 1rem;
+	color:#264a60;
 }
 
 
 .iotDemo .black-button {
 	background-color: #152935;
 	color: white;
+	width:100%;
 }
 
 .iotDemo .section-button {
@@ -150,10 +188,30 @@ html, body {
 img.divider-line {
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
+	width:100%;
 }
 
 .iotDemo ol, .iotDemo ul {
 	list-style: none;
+}
+.ordered-section{
+	padding-left:1rem;
+}
+
+.iotDemo ul.li-one , .iotDemo ul.li-two{
+     list-style: inherit;
+     padding-left:1rem;
+ }
+ .iotDemo ul.li-one li, .iotDemo ul.li-two li{
+ 	padding-left:1rem;
+ }
+.white-section hr{
+	display: block; height: 1px;
+    border: 0; border-top: 1px solid #98A9B4;
+    margin: 1em 0; padding: 0;
+        margin-bottom:4rem;
+        opacity:0.4;
+
 }
 
 @media screen and (min-width: 694px)
@@ -167,17 +225,15 @@ padding: 5.71429rem 10%;
 }
 
 div#name-entry-section {
-	background-image: url('/static/images/squares.svg');
-	background-repeat: no-repeat;
+/*	background-image: url('/static/images/squares.svg');
+*/	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: auto;
 	border: 0;
 	padding-bottom: 0;
 }
 
-div#connectedPanel {
-	padding-top: 0;
-}
+
 
 @media screen and (min-width: 1440px){
 	div#name-entry-section {
@@ -187,41 +243,77 @@ div#connectedPanel {
 
 p#first-steps {
 	padding-top: 1rem;
-	max-width: 500px;
+	/*max-width: 500px;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: auto;*/
 }
 
-#name-entry-section input#username3 {
-	width: inherit;
-}
+/*#name-entry-section input#username3 {
+	width: 28em;
+}*/
 
-#name-entry-section input#pin3 {
+/*#name-entry-section input#pin3 {
 	width: 10em;
+}*/
+
+.col-sm-12.col-md-6, #connectedPanel{
+	padding-left:2rem;
+	padding-right:2rem!important;
+}
+.flex-layout.col-md-6.col-sm-12.col-lg-6{
+	padding-left:0rem;
+	padding-right:0rem!important;
 }
 
-#name-entry-section, #connectedPanel {
+.col-sm-12.col-md-6.pad-right{
+	margin-bottom: 2rem;
+}
+
+#connectPanel .black-button{
+	margin-top:18px;
+}
+#goForm{
+	text-align:center;
+}
+
+/** remove padding **/
+/*#name-entry-section, #connectedPanel {
 	padding: 3.5rem 10%;
 }
-
+*/
 #qrcode {
-	padding: 1rem;
+	float:left;
+	width:16%;
+}
+#qrcode canvas{
+	max-width: 100%;
+}
+.qrlink{
+	float:right;
+	width:83%;
+}
+.qrlink #myDeviceLink{
+	margin-left:1em;
+	float:left;
+	margin-top:6%;
 }
 
 @media screen and (min-width: 694px){
-	#name-entry-section, #connectedPanel {
+/*	#name-entry-section, #connectedPanel {
 		padding: 4.28571rem 10%;
-	}
+	}*/
 }
 
 form#goForm {
-	margin-top: 1em;
+	margin-top: -0.5em;
 	margin-bottom: 1em;
 }
 
-/* Graph styles */
-.graphHolder {}
+form#goForm .form-item input{width:100%;}
+/* padding between form elements **/
+.form-item.col-md-8.col-xs-8{padding-right: 15px;}
 
+/* Graph styles */
 .primaryline {
 	stroke: #1d3649;			/* the line colour for paths*/
 	stroke-width: 2;			/* the line width for paths is 2 pixels */
@@ -229,13 +321,13 @@ form#goForm {
 }
 
 .secondaryline {
-	stroke: #41d6c3;			/* the line colour for paths*/
+	stroke: rgb(152,169,180);			/* the line colour for paths*/
 	stroke-width: 2;			/* the line width for paths is 2 pixels */
 	fill: none;
 }
 
 .tertiaryline {
-	stroke: #5596e6;			/* the line colour for paths*/
+	stroke: rgb(152,169,180);			/* the line colour for paths*/
 	stroke-width: 2;			/* the line width for paths is 2 pixels */
 	fill: none;
 }
@@ -243,13 +335,11 @@ form#goForm {
 .axis path,
 .axis line {
 	fill: none;					/* don't fill areas bounded by the axis line */
-	stroke: grey;				/* make the axis line grey */
+	stroke: none;				/* make the axis line grey */
 	stroke-width: 1;			/* make the width of the axis lines 1 pixel */
 	shape-rendering: crispEdges;/* make the edges sharp */
 }
-.headerValue {
 
-}
 .grid .tick {
 	stroke: lightgrey;
 	opacity: 0.7;
@@ -259,20 +349,196 @@ form#goForm {
 }
 
 #cube {
+	/*margin-left:auto;
+	margin-right:auto;*/
+	background:rgba(255,255,255, 0.05);
+	width: 440px;
+	height:440px;
+	vertical-align: middle;
+	margin-bottom: 30px;
+}
+#cube .medium-font-bold{
 	margin-left:auto;
 	margin-right:auto;
-	height: 270px;
-	width: 270px;
-	background-color: #f4f4f4;
-	border: 1px #2d3f4a solid;
-	vertical-align: middle;
 }
 
 #visualisations {
-	height: 300px;
-	margin-top: 1em;
-	margin-left: auto;
-	margin-right: auto;
+/*	height: 300px;
+*/	margin-top: 4em;
+	/*margin-left: auto;
+	margin-right: auto;*/
 }
 
 
+/** 2 column grid for layout **/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.grid {
+  background: white;
+  margin: 0 0 20px 0;
+}
+.grid:after {
+  /* Or @extend clearfix */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class*='col-'] {
+  float: left;
+  padding-right: 20px;
+}
+.grid [class*='col-']:last-of-type {
+  padding-right: 0;
+}
+
+.col-2-3 {
+  width: 66.66%;
+}
+
+.col-1-3 {
+  width: 33.33%;
+}
+
+.col-1-2 {
+  width: 50%;
+}
+
+.col-1-4 {
+  width: 25%;
+}
+
+.col-1-8 {
+  width: 12.5%;
+}
+
+.module {
+  padding: 20px;
+  background: #eee;
+}
+
+/* Opt-in outside padding */
+.grid-pad {
+  padding: 20px 0 20px 20px;
+}
+.grid-pad [class*='col-']:last-of-type {
+  padding-right: 20px;
+}
+
+.flex-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  float:left
+}
+.flex{
+	display:flex;
+}
+
+.white-section.grid .flex-layout{
+	border-bottom:1px solid rgb(152,169,180);
+	padding-bottom:40px;
+	padding-top:50px;
+	float:left;
+
+}
+
+.iotDemo .flex-block{
+	margin-bottom: 30px;
+	padding-left:15px;
+}
+.iotDemo .flex-block svg{
+	width:100%;
+}
+.iotDemo .graphHolder{
+	margin-top: 15px;
+	border-left:1px solid;
+	border-bottom:1px solid;
+	border-color: rgb(152,169,180);
+	max-width:440px;
+}
+
+#connectedPanel .white-section{
+	max-width: 1200px;
+}
+
+/** center check this out vertically **/
+.small-img{
+	margin-top:40px!important;
+	width:30px;
+	margin-bottom:10px!important;
+}
+.numberCircle {
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	color: #5AAAFA;
+	border: 3px solid #5AAAFA !important;
+	padding: 6px !important;
+	text-align: center;
+	font-weight: 700 !important;
+
+}
+.small-width{
+	width:45px;
+	text-align:center;
+	margin-top:-3px!important;
+}
+
+/** align iframe with rest of page **/
+/*.iotDemo{
+	margin-left:10%;
+	margin-right:10%;
+}*/
+/** background on svg graphs **/
+svg{
+	background:rgba(255,255,255, 0.05);
+	max-width: 440px;
+	margin-bottom:-1px;
+}
+
+/**media query for width of flex box **/
+@media screen and (max-width: 0px) {
+    .flex-layout.col-md-6.col-lg-6{
+    	width:100%;
+    }
+    .col-md-7, .col-sm-12, .col-md-5{
+    	width:100%;
+    }	
+   .flex-layout.col-md-6.col-sm-12.col-lg-6 {
+  		width:100%;
+	}
+    /** center check this out vertically **/
+	.iotDemo .vertical-center{
+		margin-top:0px;
+		padding-left:30px;
+	}
+}
+@media screen and (max-width: 989px) {
+    
+
+	.small-img{
+		margin-top:0px!important;
+		width:30px;
+		margin-bottom:10px!important;
+	}
+
+
+}
+@media screen and (max-width: 780px) {
+    
+    .col-md-5.col-sm-12.flex-block, .col-md-7.col-sm-12.flex-block
+    {
+        width:100%!important;
+        float:left;
+    }
+    .iotDemo .flex-block{
+		margin-bottom: 30px;
+		padding-left:0px;
+	}	
+
+}
