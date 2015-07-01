@@ -13,54 +13,91 @@
 	<div class="device-md visible-md"></div>
 	<div class="device-lg visible-lg"></div>
 	<!-- Welcome Banner & Connect Panel -->
-	<div class="white-section" id="name-entry-section">
-		<div class="medium-large-font center-text">First...</div>
-		<p class="medium-font center-text" id="first-steps">Give your smartphone a unique name and a 4-digit code.  We’ll generate a URL for you to open in your phone’s browser.</p>
-		<div class="use-code-input-row center-text" id="connectPanel">
-			<form id="goForm">
-				<input type="text" id="username3" placeholder="DEVICE NAME" required>
-				<input type="password" id="pin3" placeholder="4-DIGIT CODE" inputmode="numeric" maxlength="4" required>
-				<button class="section-button black-button" type="submit">Go play!</button>
-			</form>
+	<div class="white-section grid" id="name-entry-section">
+		<div class="flex-title">
+		  <div class="medium-large-font center-text flex-item">
+		    First...
+		  </div>
 		</div>
-		<div class="alert" id="goWarning"><span>&nbsp;</span></div>
+
+			<div>
+
+				<!-- Left column -->
+				<div class="col-sm-12 col-md-6 pad-right">
+					<div class="col-sm-1 col-md-1 small-width">
+						<div class="numberCircle">1</div>
+					</div>
+					<div class="col-sm-11 col-md-11">
+							<p class="medium-font-bold">
+								Generate a URL
+							</p>
+							<p class="medium-font">
+								Give your smartphone a somewhat unique name and a 4-digit code.
+								We’ll generate a URL for you to open in your phone’s browser.
+							</p>
+					</div>
+				</div>
+				<!-- Right Column -->
+				<div class="col-md-6 col-sm-12">
+					<div class="use-code-input-row" id="connectPanel">
+						<form id="goForm">
+							<div class="form-item col-md-8 col-xs-8">
+								<input type="text" id="username3" placeholder="DEVICE NAME" required>
+							</div>
+							<div class="form-item col-md-4 col-xs-4">
+								<input type="password" id="pin3" placeholder="4-DIGIT CODE" inputmode="numeric" maxlength="4" required>
+							</div>
+							<button class="section-button black-button col-md-12 col-sm-12" type="submit">Go play!</button>
+						</form>
+					</div>
+					<p class="medium-font qrlink"><a id="myDeviceLink"></a></p>
+					<div class="medium-large-font" id="qrcode"></div>
+					<div class="alert" id="goWarning"><span>&nbsp;</span></div>
+				</div>
+
+			</div>
 	</div>
 
-
-	
 	<div id="connectedPanel">
 		<div class="white-section">
-			<p class="medium-font center-text">Your custom URL:</p>
-			<p class="medium-font center-text"><a id="myDeviceLink"></a></p>
-			<div class="medium-large-font center-text" id="qrcode"></div>
-			<div class="medium-large-font center-text">
-				<img class="divider-line" src="/static/images/hr.png" />
+			<hr>
+			<div class="col-sm-1 col-md-1 small-width">
+				<div class="numberCircle">2</div>
 			</div>
-			<p class="medium-large-font center-text">Watch the magic happen!</p>
-			<p class="medium-font center-text">Enter your 4-digit code on your phone and then try moving your phone around.<br />
-			<p class="medium-font center-text">See the model and graph below mirroring your movements?</p>
-			<p class="medium-font center-text">This is made possible via MQTT messaging, the IoT Foundation, and this cool sample that's hosted on Bluemix!</p>
+			<div class="col-sm-11 col-md-11">
+				<p class="medium-font-bold">Watch the magic happen!</p>
+				<p class="medium-font">Enter your 4-digit code on your phone and then try moving your phone around.<br />
+				<p class="medium-font">See the model and graph below mirroring your movements?</p>
+				<p class="medium-font">This is made possible via MQTT messaging, the IoT Foundation, and this cool sample that's hosted on Bluemix!</p>
+			</div>
+
 		</div>
 		<div class="alert" id="vibrationWarning"><span>Wow! We've detected some serious shaking!</span></div>
-		<div class="container" id="visualisations">
-    		<div class="row">
-      			<div class="col-md-6 col-sm-12 col-lg-3 center-text">
-					<p class="medium-font-bold style="font-weight:bold">Your device</p>
-					<div id="cube"></div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-lg-3 center-text">
-					<p class="medium-font-bold style="font-weight:bold">Vibration</p>
-					<div id="magData" class="graphHolder"></div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-lg-3 center-text">
-					<p class="medium-font-bold style="font-weight:bold">Motion</p>
-					<div id="accelData" class="graphHolder"></div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-lg-3 center-text">
-					<p class="medium-font-bold style="font-weight:bold">Orientation</p>
-					<div id="gyroData" class="graphHolder"></div>
-				</div>			
-    		</div>
+		<div id="visualisations">
+    		<div class="flex-layout">
+				<div id="cube" class="col-md-5 col-sm-12 col-lg-5"></div>
+				<div class="col-md-1 col-lg-1 col-sm-1"></div>
+				<div class="flex-layout col-md-6 col-sm-12 col-lg-6">
+					<div class="col-md-7 col-sm-12 flex-block">
+						<p class="medium-font-bold">Vibration</p>
+						<div id="magData" class="graphHolder"></div>
+					</div>
+					<div  class="col-md-5 col-sm-12 flex-block">
+						<img  class="small-img" src="/static/images/i-icon.svg"/>
+						<p class="medium-font-bold vertical-center">Check this out</p>
+						<p>Try shaking your device</p>
+					</div>
+					<div class='col-md-5 col-sm-12 flex-block'>
+						<p class="medium-font-bold">Motion</p>
+						<div id="accelData" class="graphHolder"></div>
+					</div>
+					<div class="col-md-2"></div>
+					<div class='col-md-5 col-sm-12 flex-block'>
+						<p class="medium-font-bold">Orientation</p>
+						<div id="gyroData" class="graphHolder"></div>
+					</div>			
+	    		</div>
+	    	</div>
     	</div>
 	</div>
 	
