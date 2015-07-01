@@ -271,6 +271,7 @@ def handle_websocket():
 					client.subscribeToDeviceEvents(deviceType, deviceId, "+")
 				except ibmiotf.ConnectionException as e: 
 					# We've been unable to do the initial connect. In this case, we'll terminate the socket to trigger the client to try again.
+					do_monitor()
 					print ("Connect attempt failed: "+str(e))
 					wsock.close()
 	except WebSocketError as e:
