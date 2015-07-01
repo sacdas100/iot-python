@@ -1,5 +1,4 @@
 * {
-	text-align: center;
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 	color: #ececec;
@@ -15,7 +14,7 @@ html {
 }
 
 body {
-	background-image: linear-gradient(to bottom right, #2d3f4a, #1d3649);
+	background-color:#264a60;
 	margin: 0;
 	padding: 0;
 }
@@ -25,13 +24,13 @@ h1, h3 {
 	font-weight: bold;
 }
 
-h1 {
+h1, #deviceTitle {
 	font-size: 1.4rem;
 	margin: 0.1em 0;
 	padding-top: 0.5em;
 }
 
-h2 {
+h2, #deviceId {
 	font-size: 1.4rem;
 	margin-top: 0.1em;
 }
@@ -116,14 +115,27 @@ input#pin{
 
 .data-table {
 	width: 100%;
-	background-color: #ececec;
 	margin: 1em 0 1em 0;
+	padding:20px;
 	border-collapse: collapse;
-	table-layout: fixed;
+}
+
+.table-rule{
+	height:1px;
+	border-bottom:1px solid;
+	border-color:rgba(255,255,255,0.2);
+}
+
+.table-rule td, .table-rule th{
+	padding-bottom: 20px!important;
+}
+
+.row-2 td, .row-2 th{
+	padding-top:40px!important;
 }
 
 .data-table * {
-	color: #1d3649;
+	color: #ececec;
 }
 
 .data-table th {
@@ -141,6 +153,7 @@ input#pin{
 
 .data-table th, .data-table td {
 	padding: 0.5rem 0 0.5rem 0;
+	text-align:left;
 }
 
 .iot-footer-pad {
@@ -165,6 +178,11 @@ button#connectButton{
 
 div#maindemo {
 	visibility: hidden;
+}
+
+.table-main{
+	padding:20px;
+	background-color: rgba(49, 83, 104, 0.6);
 }
 
 .iot-footer {
