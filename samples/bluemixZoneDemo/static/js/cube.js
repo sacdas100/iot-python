@@ -81,17 +81,17 @@
 			var url = 'http://' + window.location.host + '/device/' + username;
 			$('#myDeviceLink').text(url);
 			$('#myDeviceLink').attr('href', url);
-			$('#connectedPanel').show()
+			// $('#connectedPanel').show()
 			
-			$('#connectedPanel').css('opacity', 0).slideDown({
-				duration: 'slow',
-				progress: function() {
-					updateParentIFrame();
-				}
-			}).animate(
-				{ opacity: 1 },
-				{ queue: false, duration: 'slow' }
-			);
+			// $('#connectedPanel').css('opacity', 0).slideDown({
+			// 	duration: 'slow',
+			// 	progress: function() {
+			// 		updateParentIFrame();
+			// 	}
+			// }).animate(
+			// 	{ opacity: 1 },
+			// 	{ queue: false, duration: 'slow' }
+			// );
 		}
 
 		this.disconnect = function() {
@@ -304,11 +304,13 @@
 	var mouseX = 0;
 	var mouseXOnMouseDown = 0;
 
-	var width = 270;
-	var height = 270;
+	// var width = 270;
+	// var height = 270;
+	var width = $('#cube').width();
+	var height = $('#cube').height();
 
 	init();
-	render(0, 0, 0);
+	render(205, 0, -125);
 	
 	function getWindowScheme() {
 		if ($('.device-xs').is(':visible')) {return "xs";}
@@ -333,7 +335,7 @@
 		        
 		// cube
 		cube = new THREE.Mesh(new THREE.CubeGeometry(200, 400, 75), new THREE.MeshLambertMaterial({
-			color: 'rgb(2,104,144)' 
+			color: 'rgb(210,213,216)' 
 		}));
 		
 		cube.overdraw = true;
@@ -362,7 +364,8 @@
 	function render(_x, _y, _z) {
 		cube.rotation.x = (_x-90) * Math.PI/180; // beta
 		cube.rotation.y = _y * Math.PI/180; // gamma
-		cube.rotation.z = (_z-90) * Math.PI/180; // alpha
+		cube.rotation.z = (_z-90) * Math.PI/180; // alpha 
+		console.log(cube.rotation.x+" y: "+ cube.rotation.y+" z: "+cube.rotation.z)
 		renderer.render( scene, camera );
 	}
 
@@ -411,13 +414,13 @@
 		var maxval = this.properties.maxValue;
 
 		var margin = {
-			top: 30, 
-			right: 20, 
-			bottom: 30, 
-			left: 40
+			top: 0, 
+			right: 0, 
+			bottom: -1, 
+			left: 0
 		};
 		var width = $("#"+this.domId).parent().width() - margin.left - margin.right;
-		var height = 300 - margin.top - margin.bottom;
+		var height = 160 - margin.top - margin.bottom;
 
 		
 		// Set the ranges
@@ -427,10 +430,10 @@
 		
 		// Define the axes
 		var xAxis = d3.svg.axis().scale(x)
-			.orient("bottom").ticks(5).tickFormat("").outerTickSize(0);
+			.orient("bottom").ticks(5).tickFormat("").outerTickSize(0).tickSize(0);
 
 		var yAxis = d3.svg.axis().scale(y)
-			.orient("left").ticks(5);
+			.orient("left").ticks(5).tickFormat("").tickSize(0);
 
 		// Define the line
 		var line = new d3.svg.line()
@@ -468,22 +471,6 @@
 		svg.append("g")
 			.attr("class", "y axis")
 			.call(yAxis);
-
-		var colors = ["#1d3649", "#41d6c3", "#5596e6"];
-		
-		// Add a key to the graph
-		for (var i = 0 ; i < valuesSet.length; i++) {
-			svg.append("svg:rect")
-					.attr("x", width - 120)
-					.attr("y", 0 + i * 22)
-					.attr("stroke", colors[i])
-					.attr("height", 2)
-					.attr("width", 40);
-			svg.append("svg:text")
-					.attr("x", width - 70)
-					.attr("y", 5 + i * 22)
-					.text(this.properties.stats[i].name);
-		}
 	}
 
 	function updateGraphs() {
